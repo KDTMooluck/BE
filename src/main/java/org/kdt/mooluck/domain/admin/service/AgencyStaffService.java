@@ -17,9 +17,7 @@ public interface AgencyStaffService {
 
     void registerElder(ElderDTO elder);
 
-    // elder 정보 수정 (관리자 권한)
     void updateElder(ElderDTO elder);
 
-    // elder 삭제 (관리자 권한)
     void deleteElder(Long elderId);
 }

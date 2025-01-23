@@ -16,7 +16,6 @@
         VALUES (#{elderName}, #{elderAddress}, #{elderNumber}, #{elderAccount}, #{elderPwd}, #{staffId})
     </insert>
 
-    <!-- elder 정보 수정 (관리자 권한)  -->
     <update id="updateElder">
         UPDATE elder
         <set>
@@ -27,7 +26,6 @@
         WHERE elder_id = #{elderId}
     </update>
 
-    <!-- elder 삭제 (관리자 권한)  -->
     <delete id="deleteElder">
         DELETE FROM elder
         WHERE elder_id = #{elderId};

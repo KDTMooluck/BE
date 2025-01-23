@@ -107,7 +107,6 @@ public class AgencyStaffServiceImpl implements AgencyStaffService {
         logger.info("노인 등록 성공: {}", elder.getElderName());
     }
 
-    // elder 정보 수정 (관리자 권한)
     @Override
     public void updateElder(ElderDTO elder) {
         if (elder == null || elder.getElderId() == null) {
@@ -121,7 +120,6 @@ public class AgencyStaffServiceImpl implements AgencyStaffService {
         }
     }
 
-    // elder 삭제 (관리자 권한)
     @Override
     public void deleteElder(Long elderId) {
         if (elderId == null) {

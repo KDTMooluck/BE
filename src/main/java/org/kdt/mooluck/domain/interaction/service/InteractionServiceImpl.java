@@ -25,7 +25,6 @@ public class InteractionServiceImpl implements InteractionService {
     @Override
     @Transactional
     public void incrementPetCount(int elderId) {
-        // INSERT로 오늘 날짜 데이터가 없으면 추가 (대비)
         interactionMapper.insertIfNotExists(elderId);
 
         interactionMapper.incrementPetCount(elderId);
@@ -35,9 +34,7 @@ public class InteractionServiceImpl implements InteractionService {
 
     @Override
     @Transactional
-    public void incrementWaterCount(int elderId)
-    {
-        // INSERT로 오늘 날짜 데이터가 없으면 추가 (대비)
+    public void incrementWaterCount(int elderId) {
         interactionMapper.insertIfNotExists(elderId);
 
         interactionMapper.incrementWaterCount(elderId);
