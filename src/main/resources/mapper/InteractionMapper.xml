@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.kdt.mooluck.domain.interaction.mapper.InteractionMapper">
-
     <!-- pet_count와 total_count 증가 -->
     <insert id="insertIfNotExists">
         INSERT INTO interaction (elder_id, water_count, pet_count, total_count, date,
@@ -48,7 +47,6 @@
         AND DATE(date) = CURDATE();
     </update>
 
-    <!-- water_count와 total_count 증가 -->
     <update id="incrementWaterCount">
         UPDATE interaction
         SET water_count = water_count + 1,
@@ -99,18 +97,16 @@
             );
     </insert>
     <insert id="resetCounts">
-        -- 오늘 날짜의 elder_id가 없을 때 모두 count 0인 row를 추가해주기
         INSERT INTO interaction (elder_id, water_count, pet_count, total_count, date,
                                  first_interval, second_interval, third_interval, fourth_interval, status)
         SELECT DISTINCT e.elder_id, 0, 0, 0, NOW(), 0, 0, 0, 0, '위험'
         FROM elder e
-        WHERE NOT EXISTS ( -- 오늘 날짜의 elder_id가 없을 때에(not exists) select distinct 문이 실행됨
+        WHERE NOT EXISTS (
             SELECT 1
             FROM interaction i
-            WHERE DATE(i.date) = DATE(NOW()) -- 날짜 기준 중복 확인
+            WHERE DATE(i.date) = DATE(NOW())
                 AND i.elder_id = e.elder_id
         )
-        -- GROUP BY i.elder_id; -- 중복 삽입 방지
     </insert>
 
 

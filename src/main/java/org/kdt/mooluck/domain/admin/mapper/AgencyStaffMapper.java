@@ -12,7 +12,6 @@ public interface AgencyStaffMapper {
 
     AgencyStaffDTO findByEmail(@Param("staff_email") String staff_email);
 
-    // elder 회원가입 (관리자 권한)
     void insertElder(ElderDTO elder);
     
     // elder 정보 수정 (관리자 권한)
