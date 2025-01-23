@@ -30,7 +30,6 @@ public class InteractionController {
     @PostMapping("/water")
     public ResponseEntity<String> incrementWaterCount(@RequestBody ElderRequest request) {
         Integer elderId = request.getElderId();
-        System.out.println("반응: " + elderId);
         if (elderId == null) {
             return ResponseEntity.badRequest().body("elderId가 제공되지 않았습니다.");
         }
